@@ -4,11 +4,14 @@ import Card from './Card'
 import InputText from './InputText'
 
 class App extends React.Component {
+    handleClick(){
+        console.log('clice,d!')
+    }
     render(){
         return (
             <div className={styles.app}>
                  <InputText />
-                <Card title="thereisdsfdfdon"/>
+                <Card onClick={this.handleClick} title="thereisddfsfdfdon"/>
                
             </div>
         )

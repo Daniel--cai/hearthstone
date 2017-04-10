@@ -13,17 +13,11 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     //path: resolve(__dirname, 'dist'),
-    path: '/dist',
+    path: resolve(__dirname, '/dist'),
     publicPath: '/'
   },
 
   devtool: 'inline-source-map',
-
-  devServer: {
-    hot: true,
-    contentBase: resolve(__dirname, 'dist'),
-    publicPath: '/'
-  },
 
   module: {
     rules: [
@@ -36,6 +30,11 @@ module.exports = {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader?modules', ],
       },
+      {
+        test: /\.(png|jpg)$/,
+        use: 'file-loader',
+        include: resolve(__dirname, 'src')
+      }
     ],
   },
 
@@ -46,6 +45,13 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), 
-    new webpack.NoEmitOnErrorsPlugin() 
+    new webpack.NoEmitOnErrorsPlugin(),
+
   ],
+
+  resolve: {
+    alias: {
+      'images': resolve(__dirname, 'src/assets')
+    }
+  }
 };

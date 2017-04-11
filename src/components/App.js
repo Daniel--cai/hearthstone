@@ -11,8 +11,8 @@ class App extends React.Component {
         return (
             <div className={styles.app}>
                  <InputText />
-                <Card onClick={this.handleClick} title="thereisddfsfdfdon"/>
-               
+                <Card attack="4" health="4" mana="2" name="Shyvana"/>
+                 <Card attack="4" health="4" mana="2" name="Caitlyn"/>
             </div>
         )
     }

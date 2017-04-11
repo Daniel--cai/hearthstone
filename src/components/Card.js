@@ -1,19 +1,15 @@
 import React from 'react';
-var shyvana = require("images/shyvana.png");
+var shyvana = require("images/Shyvana.png");
+var caitlyn = require("images/caitlyn.png")
 import styles from "./Card.scss";
 
-const Card = ({onClick, title}) => (
-  <div>
-    <h2>Helloffdsfddfdf, {title}</h2>
-    <button onClick = {onClick} type ="button">Clic mfe</button>
-    <img className={styles.card} src={shyvana}></img>
-     <img className={styles.card} src={shyvana}></img>
-      <img className={styles.card} src={shyvana}></img>
-       <img className={styles.card} src={shyvana}></img>
-        <img className={styles.card} src={shyvana}></img>
-         <img className={styles.card} src={shyvana}></img>
-         
+const Card = ({name, attack, health, mana}) => (
+  <div className={styles.card} >
+    <span className="name">{name}-{attack}/{health}</span>
+    <img src={require("images/"+name.toLowerCase()+".png")}></img>
   </div>
 );
 
 export default Card;
+
+//    <button onClick = {onClick} type ="button">Clic mfe</button>

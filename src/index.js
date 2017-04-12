@@ -2,18 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { AppContainer } from 'react-hot-loader';
-import App from './components/App';
+import App from 'components/App';
 
 import { applyMiddleware, createStore } from 'redux';
-import reducer from './reducers/card'
-import { addCard } from './actions/cards'
+import reducer from 'reducers/card'
+import { addCard } from 'actions/cards'
+import { Provider } from 'react-redux'
 const mountApp = document.getElementById('root')
+
+const store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleware);
+
+
 
 const render = (Component) => {
   ReactDOM.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>, mountApp
+    <Provider store = {store}>
+      <AppContainer>
+        <Component />
+      </AppContainer>
+    </Provider>, mountApp
 
   );
 };
@@ -32,38 +39,6 @@ const logger = (store)=>(next)=>(action)=>{
 }
 
 const middleware = applyMiddleware(logger);
-
-
-const initialState = {}
-
-const  reducers = function(state=initialState,action){
-    switch(action.type) {
-      case "SHYVANA":
-        var newstate = {health: 5, attack:4, mana: 3, name: "Shyvana"};
-        var newobj = {...state, 
-          cards: [...state.cards, newstate]
-        }
-        return newobj;
-      case "CAITLYN":
-        var newstate = {health: 2, attack:1, mana: 1, name: "Caitlyn"};
-        var newobj = {...state, 
-          cards: [...state.cards, newstate]
-        }
-        console.log(newobj)
-        return newobj;      
-      default:
-        return state
-    }
-}
-
-
-const store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleware);
-
-
 store.subscribe(()=> {
-  console.log("store chagned", store.getState());
+  console.log("store changed", store.getState());
 })
-
-store.dispatch(addCard("Shyvana"));
-store.dispatch(addCard("Bard"));
-store.dispatch(addCard("Lulu"));

@@ -52,11 +52,11 @@ module.exports = {
 
   resolve: {
     alias: {
-      'images': resolve(__dirname, 'src/assets'),
-      'components': resolve(__dirname, 'src/components'),
-      'containers': resolve(__dirname, 'src/containers'),
-      'actions': resolve(__dirname, 'src/actions'),
-      'reducers': resolve(__dirname, 'src/reducers'),
+      'images$': resolve(__dirname, 'src/assets'),
+      'components$': resolve(__dirname, 'src/components'),
+      'containers$': resolve(__dirname, 'src/containers'),
+      'actions$': resolve(__dirname, 'src/actions'),
+      'reducers$': resolve(__dirname, 'src/reducers'),
     }
   }
 };

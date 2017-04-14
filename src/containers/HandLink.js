@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addCard } from 'actions/cards';
+import { addCard, playCard } from 'actions/cards';
 
 import Hand from 'components/Hand';
 
@@ -11,8 +11,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onClick: (name) => {
-            dispatch(addCard(name))
+        onClick: (index) => {
+            console.log('hand clicked', index)
+            dispatch(playCard(index,0))
+          
         }
     }
 }

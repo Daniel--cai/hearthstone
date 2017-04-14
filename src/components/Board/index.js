@@ -8,7 +8,6 @@ class Board extends React.Component {
     }    
 
     render(){
-        console.log(this.props)
         const board = []
         this.props.board.forEach(function(b) {
             board.push(b.map((card, index) => {
@@ -16,7 +15,9 @@ class Board extends React.Component {
                             key={index} 
                             attack={card.attack}
                             health={card.health} 
-                            mana={card.mana}/>)}))
+                            mana={card.mana}
+                            onClick={this.props.onClick}
+                            />)}))
         }, this);
         return(
             <div>

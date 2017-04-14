@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addCard } from 'actions/cards';
+import { playCard } from 'actions/cards';
 
 import Board from 'components/Board';
 
@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: (name) => {
-            dispatch(addCard(name))
+            console.log('board clicked')
         }
     }
 }

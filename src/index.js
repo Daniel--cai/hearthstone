@@ -40,4 +40,5 @@ store.subscribe(()=> {
   console.log("store changed", store.getState());
 })
 
-store.dispatch(playCard("shyvana",0))
+//store.dispatch(playCard("shyvana",0))
+//store.dispatch(playCard("caitlyn",1))

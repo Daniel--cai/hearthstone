@@ -11,12 +11,13 @@ class Hand extends React.Component {
 
     render(){
         const hand = this.props.cards.map((card, index) => {
-            console.log()
             return (<Card   name={card.name} 
                             key={index} 
                             attack={card.attack}
                             health={card.health} 
-                            mana={card.mana}/>)})
+                            mana={card.mana}
+                            onClick={() => {this.props.onClick(index)}}
+                        />)})
         return(
             <div className="hand" ref={(h)=>this.ref = h}>
                 {hand}

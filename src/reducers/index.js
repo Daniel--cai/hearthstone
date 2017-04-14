@@ -20,11 +20,13 @@ function cards(state = [], action){
 }
 
 function board(state = [[],[]], action){
-    var opponent = action.player == 0
+    var opponent = action.player == 0 ? 1 : 0;
     switch(action.type){
         case PLAY_CARD :
-            return [...state[opponent], [...state[opponent], {health: 5, attack:4, mana: 3, name: "shyvana"}]]
-        default:
+            const newstate = [...state]
+            newstate[action.player] = [...state[action.player], {health: 5, attack:4, mana: 3, name: action.name}]
+            return newstate
+         default:
             return state
     }
 }

@@ -7,6 +7,6 @@ export function addCard(name){
     return {type: ADD_CARD, name}
 }
 
-export function playCard(name, player){
-    return {type: PLAY_CARD, name, player}
+export function playCard(player, index){
+    return {type: PLAY_CARD, player, index}
 }

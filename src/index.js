@@ -5,15 +5,12 @@ import { AppContainer } from 'react-hot-loader';
 import App from 'components/App';
 
 import { applyMiddleware, createStore } from 'redux';
-import reducer from 'reducers/card'
-import { addCard } from 'actions/cards'
+import reducer from 'reducers'
+import { addCard, playCard } from 'actions/cards'
 import { Provider } from 'react-redux'
 const mountApp = document.getElementById('root')
 
 const store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleware);
-
-
-
 const render = (Component) => {
   ReactDOM.render(
     <Provider store = {store}>
@@ -28,7 +25,7 @@ const render = (Component) => {
 render(App);
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('components/App', () => {
     render(App)
   });
 }
@@ -42,3 +39,5 @@ const middleware = applyMiddleware(logger);
 store.subscribe(()=> {
   console.log("store changed", store.getState());
 })
+
+store.dispatch(playCard("shyvana",0))

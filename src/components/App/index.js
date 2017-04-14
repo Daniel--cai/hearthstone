@@ -1,21 +1,20 @@
 import React from 'react';
 import styles from './App.scss';
-import Card from 'components/Card'
 import HandLink from "containers/HandLink";
 import EndTurnLink from 'containers/EndTurnLink'
+import BoardLink from 'containers/BoardLink'
+import { DragSource } from 'react-dnd';
 
 class App extends React.Component {
-    handleClick(){
-        console.log('clice,d!')
-    }
     render(){
         return (
-          <div className={styles.app}>
-              <EndTurnLink name="shyvana"/>
-              <EndTurnLink name="caitlyn"/>
-            <HandLink/>
-            
-          </div>
+            <div className={styles.app}>
+                <EndTurnLink name="shyvana" />
+                <EndTurnLink name="caitlyn"/>
+                <EndTurnLink name="ddafd"/>
+                <HandLink/>
+                <BoardLink/>
+            </div>
         )
     }
 }

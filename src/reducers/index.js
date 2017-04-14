@@ -12,16 +12,27 @@ function cards(state = [], action){
                 case "bard":
                     return [...state, {health: 5, attack:4, mana: 3, name: "caitlyn"}];
                 default:
-                    return [...state, {health:0, attack:0, mana: 0, name:'NULL'}]
+                    return [...state, {health:0, attack:0, mana: 0, name:'back'}]
             }  
         default:
             return state
     }
 }
 
-const Card = combineReducers({
+function board(state = [[],[]], action){
+    var opponent = action.player == 0
+    switch(action.type){
+        case PLAY_CARD :
+            return [...state[opponent], [...state[opponent], {health: 5, attack:4, mana: 3, name: "shyvana"}]]
+        default:
+            return state
+    }
+}
+
+const App = combineReducers({
     cards,
+    board,
 })
 
-export default Card
+export default App
 

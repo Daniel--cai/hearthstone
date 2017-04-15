@@ -5,16 +5,14 @@ import Hand from 'components/Hand';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        cards: state.cards
+        cards: state.field.cards
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: (index) => {
-            console.log('hand clicked', index)
-            dispatch(playCard(index,0))
-          
+            dispatch(playCard(0, index))     
         }
     }
 }

@@ -9,11 +9,12 @@ class App extends React.Component {
     render(){
         return (
             <div className={styles.app}>
+
                 <EndTurnLink name="shyvana" />
                 <EndTurnLink name="caitlyn"/>
                 <EndTurnLink name="ddafd"/>
-                <HandLink/>
                 <BoardLink/>
+                 <HandLink/>
             </div>
         )
     }

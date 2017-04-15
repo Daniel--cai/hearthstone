@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from 'components/Card'
+import Minion from 'components/Minion'
 import ReactDOM from 'react-dom'
 
 class Board extends React.Component {
@@ -11,14 +11,13 @@ class Board extends React.Component {
         const board = []
         this.props.board.forEach(function(b) {
             board.push(b.map((card, index) => {
-            return (<Card   name={card.name} 
+            return (<Minion   name={card.name} 
                             key={index} 
                             attack={card.attack}
                             health={card.health} 
                             mana={card.mana}
                             onClick={this.props.onClick}
-                            />)}))
-        }, this);
+            />)}))}, this);
         return(
             <div>
                 <div className="player0" >

@@ -8,6 +8,7 @@ import { applyMiddleware, createStore } from 'redux';
 import reducer from 'reducers'
 import { addCard, playCard } from 'actions/cards'
 import { Provider } from 'react-redux'
+require('./assets/fonts/belwe.scss');
 const mountApp = document.getElementById('root')
 
 const store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleware);

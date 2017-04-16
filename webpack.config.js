@@ -34,6 +34,11 @@ module.exports = {
         test: /\.(png|jpg)$/,
         use: 'file-loader',
         include: resolve(__dirname, 'src')
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: 'file-loader',
+        include: resolve(__dirname, 'src/assets/font')
       }
     ],
   },

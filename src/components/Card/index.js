@@ -29,7 +29,7 @@ class Card extends React.Component{
     const {connectDragSource, isDragging } = this.props
     return connectDragSource(
       <span className={styles.card}>
-        <span className={styles.attack}>Piloted Shredder</span>
+        <span className={styles.attack}>3</span>
         <img  src={require("images/champions/"+name.toLowerCase()+".png") }/>
       </span>
 

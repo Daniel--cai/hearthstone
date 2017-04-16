@@ -1,16 +1,41 @@
 import React from 'react';
 import styles from "./Card.scss";
+import { DragSource } from 'react-dnd';
+
+export const ItemTypes = {
+  CARD: 'card'
+};
+
+
+const cardSource = {
+  beginDrag(props){
+          console.log('dsfsf draggin')
+    return {
+
+    }
+  }
+}
+
+function collect(connect, monitor){
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }
+}
 
 class Card extends React.Component{ 
   render(){
     var {name, attack, health, mana, index} = this.props
-    return (
-      <div className={styles.card} onClick={() => {this.props.onClick()}}>
-        <img src={require("images/"+name.toLowerCase()+".png") }></img>
-      </div>
+    const {connectDragSource, isDragging } = this.props
+    return connectDragSource(
+      <span className={styles.card}>
+        <span className={styles.attack}>Piloted Shredder</span>
+        <img  src={require("images/"+name.toLowerCase()+".png") }/>
+      </span>
+
     )
   }
 }
-export default Card;
+export default DragSource(ItemTypes.CARD, cardSource, collect)(Card);
 
 //    <button onClick = {onClick} type ="button">Clic mfe</button>

@@ -1,6 +1,8 @@
 import React from 'react';
 import Minion from 'components/Minion'
 import ReactDOM from 'react-dom'
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 class Board extends React.Component {
     
@@ -31,6 +33,6 @@ class Board extends React.Component {
     };
 }
 
-export default Board;
+export default DragDropContext(HTML5Backend)(Board);
 
 //    <button onClick = {onClick} type ="button">Clic mfe</button>

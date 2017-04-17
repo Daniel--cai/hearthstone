@@ -7,7 +7,8 @@ import BoardLink from 'containers/BoardLink'
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-class App extends React.Component {
+@DragDropContext(HTML5Backend)
+export default class App extends React.Component {
     render(){
         return (
             <div className={styles.app}>
@@ -21,5 +22,3 @@ class App extends React.Component {
         )
     }
 }
-
-export default DragDropContext(HTML5Backend)(App);

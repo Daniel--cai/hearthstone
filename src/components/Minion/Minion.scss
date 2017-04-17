@@ -1,6 +1,6 @@
 
 .minion {
-
+    display:inline-block;
    
     span {
         color: black;
@@ -13,11 +13,6 @@
 
             z-index: 1; 
         }
-            display: inline;
-      -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
     }
     
 }  

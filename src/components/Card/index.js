@@ -6,14 +6,13 @@ export const ItemTypes = {
   CARD: 'card'
 };
 
-
 const cardSource = {
   beginDrag(props){
-    return props
+    return {...props}
   },
 
   canDrag(props, monitor){
-    return false
+    return true
   }
 }
 
@@ -24,7 +23,8 @@ function collect(connect, monitor){
   }
 }
 
-class Card extends React.Component{ 
+@DragSource(ItemTypes.CARD, cardSource, collect)
+export default class Card extends React.Component{ 
   render(){
     var {name, attack, health, mana, index} = this.props
     const {connectDragSource, isDragging } = this.props
@@ -36,6 +36,3 @@ class Card extends React.Component{
     )
   }
 }
-export default DragSource(ItemTypes.CARD, cardSource, collect)(Card);
-
-//    <button onClick = {onClick} type ="button">Clic mfe</button>

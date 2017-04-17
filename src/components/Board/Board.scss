@@ -1,11 +1,30 @@
 .board {
 
-    display: flex;   
-    height:200px;
-    span {
-        color: black;
+    ul {
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
     }
-    border: 2px black solid;
 
-    
+    border: 2px black solid;
 }  
+
+.enter {
+  opacity: 0.01;
+}
+
+.enteractive {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.leave {
+  opacity: 1;
+}
+
+.leaveactive {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

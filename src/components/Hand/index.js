@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
 
-class Hand extends React.Component {
+export default class Hand extends React.Component {
     
     componentDidUpdate(prevProps, prevState) {
 
@@ -30,7 +30,3 @@ class Hand extends React.Component {
         )
     };
 }
-
-export default Hand;
-
-//    <button onClick = {onClick} type ="button">Clic mfe</button>

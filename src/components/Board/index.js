@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import styles from './Board.scss'
 import {ItemTypes} from 'components/Card'
 import { DropTarget } from 'react-dnd';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
 const boardTarget = {
     drop(props, monitor){
@@ -19,8 +20,8 @@ function collect(connect, monitor) {
   };
 }
 
-
-class Board extends React.Component {
+@DropTarget(ItemTypes.CARD, boardTarget, collect)
+export default class Board extends React.Component {
     componentDidUpdate(prevProps, prevState) {    
     }    
 
@@ -29,7 +30,7 @@ class Board extends React.Component {
         const {connectDropTarget, isOver } = this.props
         this.props.board.forEach(function(b) {
             board.push(b.map((card, index) => {
-            return (<Minion   name={card.name} 
+            return (<Minion name={card.name} 
                             key={index} 
                             attack={card.attack}
                             health={card.health} 
@@ -37,17 +38,20 @@ class Board extends React.Component {
             />)}))}, this);
         return connectDropTarget(
             <div className={styles.board}>
-                <div className="player0" >
-                    {board[0]}
-                </div>
-                <div className="player1" >
-                    {board[1]}
-                </div>
+                <ul>
+                    <CSSTransitionGroup
+                        transitionName={{
+                            enter: styles.enter,
+                            enterActive: styles.enteractive,
+                            leave: styles.leave,
+                            leaveActive: styles.leaveactive,
+                        }} 
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={300}>
+                    {board[0]}      
+                    </CSSTransitionGroup>
+                </ul>
             </div>
         )
     };
 }
-
-export default DropTarget(ItemTypes.CARD, boardTarget, collect)(Board);
-
-//    <button onClick = {onClick} type ="button">Clic mfe</button>

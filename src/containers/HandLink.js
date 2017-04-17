@@ -17,9 +17,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const HandLink = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Hand)
+const HandLink = connect(mapStateToProps, mapDispatchToProps)(Hand)
 
 export default HandLink;

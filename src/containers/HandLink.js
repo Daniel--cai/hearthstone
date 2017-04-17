@@ -11,8 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onClick: (index) => {
-               
+        playCard: (index) => {
+            dispatch(playCard(0,index))
         }
     }
 }

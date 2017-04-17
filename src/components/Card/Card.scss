@@ -1,31 +1,74 @@
 
 .card {
-    
+    position:relative;
     display:inline-block;
     color:black;
-            -webkit-user-drag: none; 
     img {
         width: 100px;
         height: auto;
 
     }  
-    span {
-        font-family: "Belwe";
-        font-weight: bold;
-        font-size:22px;
-        position:relative;
-        color:white;
-        -webkit-text-stroke-width: 0.5px;
-        -webkit-text-stroke-color: black;
-        }
+}
+.mana {
+    
+    top: -116px;
+    left: 22px;
+}
+
+.attack {
+    position:absolute;
+    img{
+
+        width:30px;
+        height:auto;
+        top: -2px;
+        left: -12px;
         &:hover {
             transition: transform ease-in-out 0.2s;
-            transform: scale(1.55);
+            //transform: scale(1.55);
             z-index: 1; 
             opacity: 0.9;
         }
+        
+    }
+    top: -10px;
+    left: -89px;
 }
-.attack {
-    top: -116px;
-    left: 22px;
+
+.value {
+     position:absolute;
+    z-index: 1;
+    font-family: "Belwe";
+    font-weight: bold;
+    font-size:22px;
+    color:white;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+     &:hover {
+            transition: transform ease-in-out 0.2s;
+            transform: scale(1.55);
+
+            opacity: 0.9;
+    }
+}
+
+.health {
+    img{
+        position:absolute;
+        width:24px;
+        height:auto;
+        top: -2px;
+        left: -8px;
+        z-index: 0; 
+            &:hover {
+        transition: transform ease-in-out 0.2s;
+        transform: scale(1.55);
+        z-index: 1; 
+        opacity: 0.9;
+    }
+    }
+    
+    top: -9px;
+    left: -30px;
+
 }

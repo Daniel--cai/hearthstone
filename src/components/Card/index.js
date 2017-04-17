@@ -9,10 +9,11 @@ export const ItemTypes = {
 
 const cardSource = {
   beginDrag(props){
-          console.log('dsfsf draggin')
-    return {
+    return props
+  },
 
-    }
+  canDrag(props, monitor){
+    return false
   }
 }
 
@@ -29,7 +30,6 @@ class Card extends React.Component{
     const {connectDragSource, isDragging } = this.props
     return connectDragSource(
       <span className={styles.card}>
-        <span className={styles.attack}>3</span>
         <img  src={require("images/champions/"+name.toLowerCase()+".png") }/>
       </span>
 

@@ -1,8 +1,11 @@
 .board {
-    display: inline   
+
+    display: flex;   
+    height:200px;
     span {
         color: black;
     }
-    border: 2px black solid
+    border: 2px black solid;
+
     
 }  

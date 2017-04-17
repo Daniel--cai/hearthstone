@@ -1,16 +1,32 @@
 import React from 'react';
 import Minion from 'components/Minion'
 import ReactDOM from 'react-dom'
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import styles from './Board.scss'
+import {ItemTypes} from 'components/Card'
+import { DropTarget } from 'react-dnd';
+
+const boardTarget = {
+    drop(props, monitor){
+        const card = monitor.getItem();
+        card.playCard(card.index);
+    }
+}
+
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
+  };
+}
+
 
 class Board extends React.Component {
-    
     componentDidUpdate(prevProps, prevState) {    
     }    
 
     render(){
         const board = []
+        const {connectDropTarget, isOver } = this.props
         this.props.board.forEach(function(b) {
             board.push(b.map((card, index) => {
             return (<Minion   name={card.name} 
@@ -18,10 +34,9 @@ class Board extends React.Component {
                             attack={card.attack}
                             health={card.health} 
                             mana={card.mana}
-                            onClick={this.props.onClick}
             />)}))}, this);
-        return(
-            <div>
+        return connectDropTarget(
+            <div className={styles.board}>
                 <div className="player0" >
                     {board[0]}
                 </div>
@@ -33,6 +48,6 @@ class Board extends React.Component {
     };
 }
 
-export default DragDropContext(HTML5Backend)(Board);
+export default DropTarget(ItemTypes.CARD, boardTarget, collect)(Board);
 
 //    <button onClick = {onClick} type ="button">Clic mfe</button>

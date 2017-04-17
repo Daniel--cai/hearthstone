@@ -6,7 +6,7 @@ class Minion extends React.Component{
     var {name, attack, health, mana, index} = this.props
     return (
       <div className={styles.minion}>
-        <img src={require("images/"+name.toLowerCase()+".png") }></img>
+        <img src={require("images/champions/"+name.toLowerCase()+".png") }></img>
       </div>
     )
   }

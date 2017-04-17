@@ -20,7 +20,8 @@ class Hand extends React.Component {
                             attack={card.attack}
                             health={card.health} 
                             mana={card.mana}
-                            onClick={() => {this.props.onClick(index)}}
+                            index= {index}
+                            playCard={() => {this.props.playCard(index)}}
                         />)})
         return(
             <div className={styles.hand} ref={(h)=>this.ref = h}>
@@ -30,6 +31,6 @@ class Hand extends React.Component {
     };
 }
 
-export default DragDropContext(HTML5Backend)(Hand);
+export default Hand;
 
 //    <button onClick = {onClick} type ="button">Clic mfe</button>

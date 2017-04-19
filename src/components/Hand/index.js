@@ -7,20 +7,16 @@ import HTML5Backend from 'react-dnd-html5-backend';
 
 
 export default class Hand extends React.Component {
-    
-    componentDidUpdate(prevProps, prevState) {
-
-        
+    componentDidUpdate(prevProps, prevState) { 
     }    
 
     render(){
         const hand = this.props.cards.map((card, index) => {
             return (<Card   name={card.name} 
-                            key={index} 
+                            key={card.id} 
                             attack={card.attack}
                             health={card.health} 
                             mana={card.mana}
-                           
                             playCard={() => {this.props.playCard(index)}}
                         />)})
         return(

@@ -25,6 +25,7 @@ function collect(connect, monitor){
 
 @DragSource(ItemTypes.CARD, cardSource, collect)
 export default class Card extends React.Component{ 
+
   render(){
     var {name, attack, health, mana} = this.props
     const {connectDragSource, isDragging } = this.props

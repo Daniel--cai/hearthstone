@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { ADD_CARD, PLAY_CARD } from '../actions/cards'
 
-
 function removeCard(cards, index){
     return [...cards.slice(0, index), ...cards.slice(index+1)]
 }
@@ -14,17 +13,18 @@ function addCardBoard(board, card, player){
     }
 }
 
-function field (state = {cards:[], board:[[],[]]}, action){
+function field (state = {cards:[], board:[[],[]], idCounter:0}, action){
+    let id = state.idCounter + 1;
     switch(action.type){
         case ADD_CARD:
             switch(action.name){
                 case "shyvana":
-                    return {...state, cards:[...state.cards, {health: 5, attack:4, mana: 3, name: "shyvana"}]};  
+                    return {...state, cards:[...state.cards, {health: 5, attack:4, mana: 3, name: "shyvana", id:id}], idCounter:id};  
 
                 case "caitlyn":
-                    return {...state, cards:[...state.cards, {health: 5, attack:4, mana: 3, name: "caitlyn"}]};  
+                    return {...state, cards:[...state.cards, {health: 5, attack:4, mana: 3, name: "caitlyn", id:id}],idCounter:id};  
                 default:
-                    return {...state, cards:[...state.cards, {health: 5, attack:4, mana: 3, name: "back"}]}; 
+                    return {...state, cards:[...state.cards, {health: 5, attack:4, mana: 3, name: "back", id:id}],idCounter:id}; 
             }  
         case PLAY_CARD :
             return {...state, cards: removeCard(state.cards, action.index), 

@@ -13,14 +13,11 @@ const boardTarget = {
     }
 }
 
-function collect(connect, monitor) {
-  return {
+@DropTarget(ItemTypes.CARD, boardTarget, (connect, monitor) => ({
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver()
-  };
-}
+}))
 
-@DropTarget(ItemTypes.CARD, boardTarget, collect)
 export default class Board extends React.Component {
     componentDidUpdate(prevProps, prevState) {    
     }    
@@ -38,7 +35,7 @@ export default class Board extends React.Component {
             />)}))}, this);
         return connectDropTarget(
             <div className={styles.board}>
-                <ul>
+                
                     <CSSTransitionGroup
                         transitionName={{
                             enter: styles.enter,
@@ -50,7 +47,7 @@ export default class Board extends React.Component {
                         transitionLeaveTimeout={300}>
                     {board[0]}      
                     </CSSTransitionGroup>
-                </ul>
+              
             </div>
         )
     };

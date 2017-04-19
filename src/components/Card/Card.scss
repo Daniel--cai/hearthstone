@@ -1,19 +1,29 @@
 
 .card {
-    position:relative;
+    position:inline-block;
     display:inline-block;
     color:black;
+    max-width: 100px;
+    max-height: auto;
+    transition: margin 1s ease-in-out,width 0.2s ease-in-out;
     img {
-        width: 100px;
-        height: auto;
-
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }  
 }
+
+.card-drag {
+    opacity: 1;
+    margin: -50px;
+}
+
 .mana {
     
     top: -116px;
     left: 22px;
 }
+
 
 .attack {
     position:absolute;
@@ -34,7 +44,6 @@
     top: -10px;
     left: -89px;
 }
-
 .value {
      position:absolute;
     z-index: 1;

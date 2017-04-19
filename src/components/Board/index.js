@@ -34,20 +34,8 @@ export default class Board extends React.Component {
                             mana={card.mana}
             />)}))}, this);
         return connectDropTarget(
-            <div className={styles.board}>
-                
-                    <CSSTransitionGroup
-                        transitionName={{
-                            enter: styles.enter,
-                            enterActive: styles.enteractive,
-                            leave: styles.leave,
-                            leaveActive: styles.leaveactive,
-                        }} 
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={300}>
-                    {board[0]}      
-                    </CSSTransitionGroup>
-              
+            <div className={styles.board}>              
+                    {board[0]}                   
             </div>
         )
     };

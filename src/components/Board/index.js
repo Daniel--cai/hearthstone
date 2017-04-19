@@ -9,7 +9,7 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 const boardTarget = {
     drop(props, monitor){
         const card = monitor.getItem();
-        card.playCard(card.index);
+        card.playCard();
     }
 }
 

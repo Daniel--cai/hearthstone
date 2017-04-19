@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./Minion.scss";
 import { DragSource, DropTarget } from 'react-dnd';
-
+import classnames from 'classnames'
 export const ItemTypes = {
   MINION: 'minion',
 }
@@ -42,12 +42,16 @@ export default class Minion extends React.Component{
       mana, 
       index, 
       connectDragSource, 
-      connectDropTarget
+      connectDropTarget,
+      isDragging,
     } = this.props
-
+    
+    const opacity = {opacity : isDragging ? 0 : 1};
+    const cursor = isDragging ? 'crosshair' : 'default';
+    let classNames = classnames(styles.minion, isDragging ? styles['minion-drag'] : '')
     return connectDragSource(connectDropTarget(
-      <li className={styles.minion}>
-        <img src={require("images/champions/"+name.toLowerCase()+".png") }></img>
+      <li className={classNames}>
+        <img src={require("images/champions/"+name.toLowerCase()+".png") }/>
       </li>
     ))
   }

@@ -32,6 +32,7 @@ export default class Board extends React.Component {
                             attack={card.attack}
                             health={card.health} 
                             mana={card.mana}
+                            id = {card.id}
             />)}))}, this);
         return connectDropTarget(
             <div className={styles.board}>              

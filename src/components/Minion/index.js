@@ -11,8 +11,13 @@ const minionTarget = {
       const minion = monitor.getItem();
       console.log(minion.name, "attacking ", props.name);
       //card.playCard(card.index);
+  },
+  canDrop(props, monitor){
+
+    return (props.id != monitor.getItem().id)
   }
 }
+
 const minionSource = {
   beginDrag(props){
     return {...props}
@@ -23,8 +28,10 @@ const minionSource = {
   }
 }
 
-@DropTarget(ItemTypes.MINION, minionTarget, connect => ({
+@DropTarget(ItemTypes.MINION, minionTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
+  isOver: monitor.isOver(),
+  canDrop: monitor.canDrop()
 }))
 
 @DragSource(ItemTypes.MINION, minionSource, (connect, monitor) => ({
@@ -36,23 +43,34 @@ export default class Minion extends React.Component{
 
   render(){
     const {
-      name, 
-      attack, 
-      health, 
-      mana, 
-      index, 
-      connectDragSource, 
-      connectDropTarget,
-      isDragging,
+      name, attack, health,mana, index, 
+      connectDragSource, connectDropTarget,
+      isDragging, canDrop, isOver,
     } = this.props
     
-    const opacity = {opacity : isDragging ? 0 : 1};
-    const cursor = isDragging ? 'crosshair' : 'default';
-    let classNames = classnames(styles.minion, isDragging ? styles['minion-drag'] : '')
+    let classNames = classnames(styles.minion, 
+                                isDragging ? styles['minion-drag'] : '',
+                                canDrop && isOver ? styles['minion-can-drop'] : '')
     return connectDragSource(connectDropTarget(
-      <li className={classNames}>
+      <div className={classNames}>
         <img src={require("images/champions/"+name.toLowerCase()+".png") }/>
-      </li>
+         
+       
+        <div className={styles.attack}>   
+          <span>{attack}</span>
+           <img src={require("images/card/attack.png")} />
+        </div>
+        <div className={styles.health}>   
+          <span>{health}</span>
+           <img src={require("images/card/health.png")} />
+        </div>
+
+        <div className={styles.gem}>   
+          <span>{mana}</span>
+           <img src={require("images/card/gem.png")} />
+        </div>
+
+      </div>
     ))
   }
 }

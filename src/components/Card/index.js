@@ -12,18 +12,16 @@ const cardSource = {
   },
 
   canDrag(props, monitor){
-    return true
+    if (props.name == 'back')
+      return false;
+    return true;
   }
 }
 
-function collect(connect, monitor){
-  return {
+@DragSource(ItemTypes.CARD, cardSource, (connect,monitor)=>({
     connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  }
-}
-
-@DragSource(ItemTypes.CARD, cardSource, collect)
+    isDragging: monitor.isDragging(),
+}))
 export default class Card extends React.Component{ 
 
   render(){
@@ -31,9 +29,13 @@ export default class Card extends React.Component{
     const {connectDragSource, isDragging } = this.props
     let classNames = classnames(styles.card, isDragging ? styles['card-drag'] : '');
     return connectDragSource(
-      <span className={classNames}>
-        <img  src={require("images/champions/"+name.toLowerCase()+".png") }/>
-      </span>
+      <div className={classNames}>
+        <img className={styles.bg }src={require("images/champions/"+name.toLowerCase()+".png") }/>
+        <div className={styles.attack}>
+         
+        <img src={require("images/card/attack.png")} />
+        </div>
+      </div>
 
     )
   }

@@ -6,8 +6,9 @@ import App from 'components/App';
 
 import { applyMiddleware, createStore } from 'redux';
 import reducer from 'reducers'
-import { addCard, playCard } from 'actions/cards'
+import { addCard, playCard, newCard, removeCard } from 'actions/cards'
 import { Provider } from 'react-redux'
+
 require('./assets/fonts/belwe.scss');
 const mountApp = document.getElementById('root')
 
@@ -42,4 +43,7 @@ store.subscribe(()=> {
 })
 
 //store.dispatch(playCard("shyvana",0))
-//store.dispatch(playCard("caitlyn",1))
+store.dispatch(newCard("caitlyn",1))
+store.dispatch(removeCard(0))
+store.dispatch(newCard("caitlyn",1))
+store.dispatch(newCard("caitlyn",1))

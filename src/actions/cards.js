@@ -8,8 +8,8 @@ export function addCard(name){
     return {type: ADD_CARD, name}
 }
 
-export function playCard(player, index){
-    return {type: PLAY_CARD, player, index}
+export function playCard(player, id){
+    return {type: PLAY_CARD, player, id}
 }
 
 export function attackMinion(attacker, attacked){

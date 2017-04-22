@@ -1,18 +1,21 @@
 import { connect } from 'react-redux';
 import { addCard, playCard } from 'actions/cards';
+import { CardStatus } from 'reducers'
 
 import Hand from 'components/Hand';
 
 const mapStateToProps = (state, ownProps) => {
+
+    
     return {
-        cards: state.field.cards
+        cards : state.entity.minions.filter(c => c.status === CardStatus.DECK)
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        playCard: (index) => {
-            dispatch(playCard(0,index))
+        playCard: (id) => {
+            dispatch(playCard(0,id))
         }
     }
 }

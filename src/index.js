@@ -44,6 +44,5 @@ store.subscribe(()=> {
 
 //store.dispatch(playCard("shyvana",0))
 store.dispatch(newCard("caitlyn",1))
-store.dispatch(removeCard(0))
 store.dispatch(newCard("caitlyn",1))
 store.dispatch(newCard("caitlyn",1))

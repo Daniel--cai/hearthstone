@@ -17,7 +17,7 @@ export default class Hand extends React.Component {
                             attack={card.attack}
                             health={card.health} 
                             mana={card.mana}
-                            playCard={() => {this.props.playCard(index)}}
+                            playCard={() => {this.props.playCard(card.id)}}
                         />)})
         return(
             <div className={styles.hand}>

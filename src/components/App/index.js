@@ -15,7 +15,7 @@ export default class App extends React.Component {
         <HandLink/>
                 <EndTurnLink name="shyvana" />
                 <EndTurnLink name="caitlyn"/>
-                <EndTurnLink name="ddafd"/>
+                <EndTurnLink name="jayce"/>
                 <BoardLink/>
          
             </div>

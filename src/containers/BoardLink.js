@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
-import { playCard } from 'actions/cards';
+import { attackMinion } from 'actions/cards';
 
 import Board from 'components/Board';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        board: state.field.board
+        board: state.board
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, ownProps) => {    
     return {
-        onClick: (index) => {
-            console.log('add card')
-               
+        
+        attackMinion: (source,target) => {
+            dispatch(attackMinion(source,target));
         }
     }
 }

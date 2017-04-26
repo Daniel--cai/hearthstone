@@ -8,12 +8,15 @@ export function addCard(name){
     return {type: ADD_CARD, name}
 }
 
+
 export function playCard(player, id){
-    return {type: PLAY_CARD, player, id}
+    return (dispatch,getState) => {      
+        dispatch ({type: PLAY_CARD, player, id, state:getState()}) 
+    }
 }
 
-export function attackMinion(attacker, attacked){
-    return {type: ATTACK_MINION, attacker, attacked}
+export function attackMinion(source, target){
+    return {type: ATTACK_MINION, source, target}
 }
 
 export function newCard(name){

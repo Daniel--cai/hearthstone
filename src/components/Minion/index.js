@@ -9,8 +9,7 @@ export const ItemTypes = {
 const minionTarget = {
   drop(props, monitor){
       const minion = monitor.getItem();
-      console.log(minion.name, "attacking ", props.name);
-      //card.playCard(card.index);
+      minion.attackMinion(props);
   },
   canDrop(props, monitor){
 
@@ -53,9 +52,7 @@ export default class Minion extends React.Component{
                                 canDrop && isOver ? styles['minion-can-drop'] : '')
     return connectDragSource(connectDropTarget(
       <div className={classNames}>
-        <img src={require("images/champions/"+name.toLowerCase()+".png") }/>
-         
-       
+        <img src={require("images/champions/"+name.toLowerCase()+".png") }/>           
         <div className={styles.attack}>   
           <span>{attack}</span>
            <img src={require("images/card/attack.png")} />
@@ -69,7 +66,6 @@ export default class Minion extends React.Component{
           <span>{mana}</span>
            <img src={require("images/card/gem.png")} />
         </div>
-
       </div>
     ))
   }

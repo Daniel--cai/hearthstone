@@ -4,7 +4,6 @@ import {PLAY_CARD,ATTACK_MINION} from '../actions/cards'
 var boardInitialState = [[],[]]
 
 const addCardBoard = (board, card, player) => { 
-    console.log(player)
     if (player == 0){
         return [[...board[0],{health: card.health, attack:card.attack, mana: card.mana, name: card.name, id:card.id, player: 0}], [...board[1]]]
     } else {
@@ -19,17 +18,17 @@ const attackMinion = (board, source, target) => {
     var targetHealth = target.health;
     var copy = board.map(p => p.map(m=>({...m})))
     copy[source.player].find(m=>m.id == source.id).health = sourceHealth - targetAttack 
-    copy[target.player].find(m=>m.id == target.id).health = targetHealth - sourceAttacks
+    copy[target.player].find(m=>m.id == target.id).health = targetHealth - sourceAttack
     return copy
 
 }
 
 
 export const board = (state = boardInitialState, action) => {
-    console.log(action.player)
+ 
     switch(action.type){
         case PLAY_CARD:
-            return addCardBoard(state, action.state.cards.find((c => c.id == action.id), action.player))
+            return addCardBoard(state, action.state.cards.find((c => c.id == action.id)),action.player)
         case ATTACK_MINION:
             return attackMinion(state, action.source, action.target)
         default:

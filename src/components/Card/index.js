@@ -31,9 +31,9 @@ export default class Card extends React.Component{
     return connectDragSource(
       <div className={classNames}>
         <img className={styles.bg }src={require("images/champions/"+name.toLowerCase()+".png") }/>
-        <div className={styles.attack}>
-         
-        <img src={require("images/card/attack.png")} />
+        <div className={styles.gem}>   
+          <span>{mana}</span>
+           <img src={require("images/card/gem.png")} />
         </div>
       </div>
 

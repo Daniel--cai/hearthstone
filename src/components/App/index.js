@@ -6,9 +6,21 @@ import BoardLink from 'containers/BoardLink'
 
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+const io = require('socket.io-client') 
+const socket = io();
 
 @DragDropContext(HTML5Backend)
 export default class App extends React.Component {
+
+    constructor(props){
+        super(props);
+        
+    }
+
+    componentDidMount() {
+        socket.emit('event', {});
+    }
+
     render(){
         return (
             <div className={styles.app}>

@@ -10,6 +10,7 @@ import reducer from 'reducers/rootReducer'
 import { addCard, playCard, newCard, removeCard } from 'actions/cards'
 import { Provider } from 'react-redux'
 
+
 require('./assets/fonts/belwe.scss');
 const mountApp = document.getElementById('root')
 
@@ -52,3 +53,4 @@ store.subscribe(()=> {
 store.dispatch(addCard("shyvana"))
 store.dispatch(addCard("caitlyn"))
 store.dispatch(addCard("caitlyn"))
+

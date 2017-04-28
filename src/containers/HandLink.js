@@ -13,10 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         playCard: (id) => {
-        
             dispatch(playCard(0,id))
-            dispatch(removeCard(id));
-
         }
     }
 }

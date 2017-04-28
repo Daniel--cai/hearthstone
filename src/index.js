@@ -6,7 +6,7 @@ import App from 'components/App';
 
 import { applyMiddleware, createStore, compose } from 'redux';
 import thunk  from 'redux-thunk'
-import reducer from 'reducers/rootReducer'
+import reducer from 'reducers'
 
 import { addCard, playCard, newCard, removeCard } from 'actions/cards'
 import { Provider } from 'react-redux'
@@ -18,10 +18,17 @@ const socket = io();
 
 require('./assets/fonts/belwe.scss');
 const mountApp = document.getElementById('root')
-const composeEnhancers = (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || compose
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      shouldHotReload: true,
+    }) : compose;
 
+const middleware = [thunk,socketMiddleware]
+const enhancer  = composeEnhancers(applyMiddleware(...middleware))
 socketHandler(store);
-const store = createStore(reducer,composeEnhancers, applyMiddleware(thunk,socketMiddleware));
+const store = createStore(reducer,enhancer);
 const render = (Component) => {
   ReactDOM.render(
     <Provider store = {store}>
@@ -39,8 +46,8 @@ if (module.hot) {
   module.hot.accept('components/App', () => {
     render(App)
   });
-  module.hot.accept('reducers/rootReducer', ()=>{
-    const nextRootReducer = require('reducers/rootReducer').default;
+  module.hot.accept('reducers/index', ()=>{
+    const nextRootReducer = require('reducers').default;
     store.replaceReducer(nextRootReducer);
   })
 }
@@ -57,7 +64,7 @@ store.subscribe(()=> {
 })
 
 //store.dispatch(playCard("shyvana",0))
-store.dispatch(addCard("shyvana"))
-store.dispatch(addCard("caitlyn"))
-store.dispatch(addCard("caitlyn"))
+//store.dispatch(addCard("shyvana"))
+//store.dispatch(addCard("caitlyn"))
+//store.dispatch(addCard("caitlyn"))
 

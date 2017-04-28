@@ -11,25 +11,25 @@ const ALLCARDS = [
     },
     {
         name:'shyvana',
-        health: 4,
-        attack: 5,
+        health: 2,
+        attack: 1,
         mana: 6,
     },
     {
         name:'caitlyn',
         health: 2,
-        attack: 2,
-        mana: 3,
+        attack: 11,
+        mana: 2,
     },
     {
         name:'jayce',
-        health: 2,
+        health: 33,
         attack: 3,
         mana: 6,
     },
 ]
 
-export const  cards = (state = cardInitialState, action) => {
+export default function cards (state = cardInitialState, action) {
     let id = uuid();
     switch(action.type){
         case ADD_CARD:

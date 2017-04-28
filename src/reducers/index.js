@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import uuid from 'uuid/v4';
-import { cards } from 'reducers/cards'
-import { board } from 'reducers/board'
+
+import cards from './cards'
+import board from './board'
 
 const App = combineReducers({
     cards,

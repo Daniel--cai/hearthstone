@@ -10,8 +10,10 @@ export function addCard(name){
 
 
 export function playCard(player, id){
-    return (dispatch,getState) => {      
-        dispatch ({type: PLAY_CARD, player, id, state:getState()}) 
+    return (dispatch,getState) => {   
+        let fixed = id;   
+        dispatch ({type: PLAY_CARD, player, id:fixed, state:getState()}) 
+        dispatch (removeCard(fixed))
     }
 }
 
@@ -24,5 +26,7 @@ export function newCard(name){
 }
 
 export function removeCard(id){
-    return {type: REMOVE_CARD, id}
+    return (dispatch) => {
+        dispatch({type: REMOVE_CARD, id}) 
+    }
 }

@@ -24,7 +24,7 @@ const attackMinion = (board, source, target) => {
 }
 
 
-export const board = (state = boardInitialState, action) => {
+export default function board(state = boardInitialState, action) {
  
     switch(action.type){
         case PLAY_CARD:

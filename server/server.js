@@ -16,18 +16,26 @@ app.use(webpackDevMiddleware(compiler, {
 }))
 app.use(webpackHotMiddleware(compiler))
 
-
-io.on('connection', function(socket){
+const connections = [];
+io.on('connection', (socket) => {
+    connections.push(socket)
     console.log('a user connected')
-    socket.emit('news', {hello: 'wosrld'});
+
     socket.on('event', (data)=>{
         console.log(data)
+        socket.emit('news', {hello: 'wosrld'});
     })
     socket.on('disconnect', ()=>{
+        const index = connections.indexOf(socket);
+        connections.splice(index,1);
         console.log('user disconnected')
+    })
+
+    socket.on('PLAY_CARD', (data)=>{
+        console.log('updateing', data);
     })
 })
 
 server.listen(PORT, function(){
-    console.log("https://localhost:3000");
+    console.log("https://localhost:"+PORT);
 })

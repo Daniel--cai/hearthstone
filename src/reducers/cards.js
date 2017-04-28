@@ -17,13 +17,13 @@ const ALLCARDS = [
     },
     {
         name:'caitlyn',
-        health: 5,
-        attack: 1,
+        health: 2,
+        attack: 2,
         mana: 3,
     },
     {
         name:'jayce',
-        health: 4,
+        health: 2,
         attack: 3,
         mana: 6,
     },

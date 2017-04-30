@@ -10,7 +10,6 @@ var io = require('socket.io')(server);
 var compiler = webpack(webpackConfig);
 const PORT = process.env.PORT || 3000
 
-var RequestAddCard = require('./handler');
 var actions = require('./constants');
 var allCards = require('./cards')
 
@@ -23,24 +22,15 @@ app.use(webpackHotMiddleware(compiler))
 
 
 const connections = [];
-var cardIdCounter = 0;
+let cardIdCounter = 0;
 
-function newCard(action){
-    var card = allCards.find(c => c.name == action.name)
-    var data = Object.assign({}, card, {type: actions.ADD_CARD, id:cardIdCounter++}) 
-    return data
-}
 
-function greetCurried (io, socket){
-    return function(handler) { 
-        handler.bind({io,socket})
-    }
-}
+
 
 io.on('connection', (socket) => {
-    this.socket = socket;
+    let curry = func => func.bind({socket})
+    let RequestAddCard = curry(require('./handler'));
 
-    const greetHello = greetCurried((action)=>handler(action)) 
     connections.push(socket)
     console.log('a user connected')
 
@@ -58,8 +48,10 @@ io.on('connection', (socket) => {
         console.log('updateing', data);
     })
 
-    socket.on(actions.REQUEST_ADD_CARD, greetHello(RequestAddCard))
+    socket.on(actions.REQUEST_ADD_CARD, (action) => RequestAddCard(action))
 })
+
+
 
 
 

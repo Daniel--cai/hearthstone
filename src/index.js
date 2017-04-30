@@ -8,7 +8,7 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import thunk  from 'redux-thunk'
 import reducer from 'reducers'
 
-import { addCard, playCard, newCard, removeCard } from 'actions/cards'
+import { playCard, newCard, removeCard } from 'actions/cards'
 import { Provider } from 'react-redux'
 import socketHandler, {socketMiddleware} from './sockethandler'
 
@@ -27,8 +27,9 @@ const composeEnhancers =
 
 const middleware = [thunk,socketMiddleware]
 const enhancer  = composeEnhancers(applyMiddleware(...middleware))
-socketHandler(store);
 const store = createStore(reducer,enhancer);
+
+socketHandler(store);
 const render = (Component) => {
   ReactDOM.render(
     <Provider store = {store}>
@@ -63,8 +64,5 @@ store.subscribe(()=> {
   //console.log("store changed", store.getState());
 })
 
-//store.dispatch(playCard("shyvana",0))
-//store.dispatch(addCard("shyvana"))
-//store.dispatch(addCard("caitlyn"))
-//store.dispatch(addCard("caitlyn"))
+
 

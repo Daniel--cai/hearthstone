@@ -10,13 +10,32 @@ var io = require('socket.io')(server);
 var compiler = webpack(webpackConfig);
 const PORT = process.env.PORT || 3000
 
+
+var actions = require('./constants');
+var allCards = require('./cards')
+
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: webpackConfig.output.publicPath
 }))
 app.use(webpackHotMiddleware(compiler))
 
+
+
 const connections = [];
+var cardIdCounter = 0;
+
+function newCard(action){
+    cardIdCounter++;
+    var card = allCards.find(c => c.name == action.name)
+    var data = Object.assign({}, card, {type: actions.ADD_CARD, id:cardIdCounter}) 
+    console.log(data)
+    return data
+}
+
+var test_newCard = newCard({type:actions.ADD_CARD, name:'jayce' })
+console.log(test_newCard.type == actions.ADD_CARD)
+
 io.on('connection', (socket) => {
     connections.push(socket)
     console.log('a user connected')
@@ -31,8 +50,13 @@ io.on('connection', (socket) => {
         console.log('user disconnected')
     })
 
-    socket.on('PLAY_CARD', (data)=>{
+    socket.on(actions.PLAY_CARD, (data)=>{
         console.log('updateing', data);
+    })
+
+    socket.on(actions.REQUEST_ADD_CARD, (action)=>{
+        console.log('received',action)
+        socket.emit(actions.ADD_CARD, newCard(action))
     })
 })
 

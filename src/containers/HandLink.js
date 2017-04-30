@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addCard, playCard, removeCard } from 'actions/cards';
+import { playCard, removeCard } from 'actions/cards';
 
 
 import Hand from 'components/Hand';

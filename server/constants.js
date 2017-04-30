@@ -1,0 +1,9 @@
+
+module.exports = Object.freeze({
+    ADD_CARD: 'ADD_CARD',
+    PLAY_CARD: 'PLAY_CARD',
+    ATTACK_MINION: 'ATTACK_MINION',
+    NEW_CARD: 'NEW_CARD',
+    REMOVE_CARD: 'REMOVE_CARD',
+    REQUEST_ADD_CARD: 'REQUEST_ADD_CARD'
+})

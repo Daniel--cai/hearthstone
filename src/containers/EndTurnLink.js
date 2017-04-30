@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { addCard, newCard} from 'actions/cards';
+import { newCard, requestAddCard} from 'actions/cards';
 import EndTurn from 'components/EndTurn'
+
 const mapStateToProps = (state, ownProps) => {
     return {
         state:state
@@ -10,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: (name) => {
-            dispatch(addCard(ownProps.name))
+
+            dispatch(requestAddCard(ownProps.name))
         }
     }
 }

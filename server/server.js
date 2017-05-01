@@ -7,11 +7,16 @@ var webpackConfig = require("../webpack.config");
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+
 var compiler = webpack(webpackConfig);
 const PORT = process.env.PORT || 3000
 
+
 var actions = require('./constants');
 var allCards = require('./cards')
+
+const game = require('./game')
+const player = require('./player')
 
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
@@ -19,38 +24,21 @@ app.use(webpackDevMiddleware(compiler, {
 }))
 app.use(webpackHotMiddleware(compiler))
 
-var chat 
-
 const connections = [];
+const games = [];
 let cardIdCounter = 0;
 
 
 io.on('connection', (socket) => { 
     this.data = 'hello'
-    let _curry = func => data => func.bind({socket})(data)
+    var g = game;
+    console.log(game)
+    g.players = [Object.assign({},player), Object.assign({},player)]
+    let _curry = func => data => func.bind({socket,game:g})(data)
     let RequestAddCard = _curry(require('./handler').RequestAddCard);
-
-    var log = require('./handler').log
-    
-    var binded = log//.bind(this);
-    binded('hello2')
-
     connections.push(socket)
     console.log('a user connected')
 
-/*
-
-    var socketHandler = {
-        [actions.REQUEST_ADD_CARD]: 'sdf',
-    }
-
-    for (let type in socketHandler){
-        var handler = socketHandler[type].handlers
-        for (var event in handlers){
-            socket.on(event, handler[event])
-        }
-    }
-*/
     socket.on('event', (data)=>{
         console.log(data)
         socket.emit('ndews', {hello: 'wosrld'});

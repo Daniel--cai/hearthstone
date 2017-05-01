@@ -8,6 +8,13 @@ function newCard(action){
     return data
 }
 
-module.exports = function(action){
-    this.socket.emit(actions.ADD_CARD, newCard(action))
+module.exports = {
+    RequestAddCard: function(action) {
+        this.socket.emit(actions.ADD_CARD, newCard(action))
+    },
+    log: function(action) {
+        console.log(this)
+        console.log('log:');
+        console.log(':end log');
+    }
 }

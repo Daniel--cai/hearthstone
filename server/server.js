@@ -19,21 +19,38 @@ app.use(webpackDevMiddleware(compiler, {
 }))
 app.use(webpackHotMiddleware(compiler))
 
-
+var chat 
 
 const connections = [];
 let cardIdCounter = 0;
 
 
+io.on('connection', (socket) => { 
+    this.data = 'hello'
+    let _curry = func => data => func.bind({socket})(data)
+    let RequestAddCard = _curry(require('./handler').RequestAddCard);
 
-
-io.on('connection', (socket) => {
-    let curry = func => func.bind({socket})
-    let RequestAddCard = curry(require('./handler'));
+    var log = require('./handler').log
+    
+    var binded = log//.bind(this);
+    binded('hello2')
 
     connections.push(socket)
     console.log('a user connected')
 
+/*
+
+    var socketHandler = {
+        [actions.REQUEST_ADD_CARD]: 'sdf',
+    }
+
+    for (let type in socketHandler){
+        var handler = socketHandler[type].handlers
+        for (var event in handlers){
+            socket.on(event, handler[event])
+        }
+    }
+*/
     socket.on('event', (data)=>{
         console.log(data)
         socket.emit('ndews', {hello: 'wosrld'});
@@ -48,7 +65,7 @@ io.on('connection', (socket) => {
         console.log('updateing', data);
     })
 
-    socket.on(actions.REQUEST_ADD_CARD, (action) => RequestAddCard(action))
+    socket.on(actions.REQUEST_ADD_CARD, RequestAddCard)
 })
 
 

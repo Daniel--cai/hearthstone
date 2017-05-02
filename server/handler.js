@@ -8,10 +8,12 @@ function newCard(action){
     return data
 }
 
+function playCard(action){  
+}
+
 module.exports = {
     RequestAddCard: function(action) {
         var card = newCard(action)
-
         this.game.players[0].hand.push(card);
         console.log(this.game.players[0])
         this.socket.emit(actions.ADD_CARD, card)

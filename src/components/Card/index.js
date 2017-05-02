@@ -12,6 +12,7 @@ const cardSource = {
   },
 
   canDrag(props, monitor){
+    if (props.mana > props.gem) return false
     if (props.name == 'back')
       return false;
     return true;
@@ -25,7 +26,7 @@ const cardSource = {
 export default class Card extends React.Component{ 
 
   render(){
-    var {name, attack, health, mana} = this.props
+    var {name, attack, health, mana, gem} = this.props
     const {connectDragSource, isDragging } = this.props
     let classNames = classnames(styles.card, isDragging ? styles['card-drag'] : '');
     return connectDragSource(

@@ -10,6 +10,7 @@ const boardTarget = {
     drop(props, monitor){
         const card = monitor.getItem();
         card.playCard();
+        card.removeGem();
     }
 }
 

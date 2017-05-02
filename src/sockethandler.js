@@ -10,7 +10,6 @@ export const socketMiddleware = store=>next=>action=>{
     if (socket){
         if (action.type == REQUEST_ADD_CARD){
             let { state, ...data} = action
-            console.log('senindg action', REQUEST_ADD_CARD)
             socket.emit(REQUEST_ADD_CARD, data);
         }
     }
@@ -21,7 +20,6 @@ export const socketMiddleware = store=>next=>action=>{
 export default function(store){
     socket = io();
     socket.on(ADD_CARD, (data)=>{
-        console.log('received:', data)
         let {id, type, ...card } = data
         store.dispatch(addCard(card,id))   
     })

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { newCard, requestAddCard} from 'actions/cards';
+import { newCard, requestAddCard, addGem, addMaxGem} from 'actions/cards';
 import EndTurn from 'components/EndTurn'
+
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -11,8 +12,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: (name) => {
-
-            dispatch(requestAddCard(ownProps.name))
+            dispatch(addMaxGem(1));
+            dispatch(addGem(10));
+            dispatch(requestAddCard(ownProps.name));
         }
     }
 }

@@ -8,7 +8,7 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import thunk  from 'redux-thunk'
 import reducer from 'reducers'
 
-import { playCard, newCard, removeCard } from 'actions/cards'
+import { playCard, newCard, removeCard, addGem } from 'actions/cards'
 import { Provider } from 'react-redux'
 import socketHandler, {socketMiddleware} from './sockethandler'
 

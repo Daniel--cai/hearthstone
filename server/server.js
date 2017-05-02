@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000
 var actions = require('./constants');
 var allCards = require('./cards')
 
-const game = require('./game')
+const Game = require('./game')
 const player = require('./player')
 
 app.use(webpackDevMiddleware(compiler, {
@@ -30,11 +30,9 @@ let cardIdCounter = 0;
 
 
 io.on('connection', (socket) => { 
-    this.data = 'hello'
-    var g = game;
-    console.log(game)
-    g.players = [Object.assign({},player), Object.assign({},player)]
-    let _curry = func => data => func.bind({socket,game:g})(data)
+    let game = Object.assign({},Game);
+    game.players = [Object.assign({},player), Object.assign({},player)]
+    let _curry = func => data => func.bind({socket,game})(data)
     let RequestAddCard = _curry(require('./handler').RequestAddCard);
     connections.push(socket)
     console.log('a user connected')

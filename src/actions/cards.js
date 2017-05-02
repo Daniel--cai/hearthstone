@@ -4,6 +4,9 @@ export const ATTACK_MINION = 'ATTACK_MINION';
 export const NEW_CARD = 'NEW_CARD';
 export const REMOVE_CARD = 'REMOVE_CARD'
 export const REQUEST_ADD_CARD = 'REQUEST_ADD_CARD'
+export const ADD_GEM = 'ADD_GEM'
+export const REMOVE_GEM = 'REMOVE_GEM'
+export const ADD_MAX_GEM = 'ADD_MAX_GEM'
 
 /**
  * Received from server. To be added to the store.
@@ -38,4 +41,16 @@ export function removeCard(id){
     return (dispatch) => {
         dispatch({type: REMOVE_CARD, id}) 
     }
+}
+
+export function addGem(amount){
+    return {type: ADD_GEM, amount}
+}
+
+export function removeGem(amount){
+    return {type: REMOVE_GEM, amount}
+}
+
+export function addMaxGem(amount){
+    return {type: ADD_MAX_GEM, amount}
 }

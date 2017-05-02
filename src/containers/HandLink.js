@@ -1,20 +1,26 @@
 import { connect } from 'react-redux';
-import { playCard, removeCard } from 'actions/cards';
+import { playCard, removeCard, removeGem } from 'actions/cards';
 
 
 import Hand from 'components/Hand';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        cards : state.cards
+        cards : state.cards,
+        gem : state.game.gem
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        playCard: (id) => {
+        playCard: (id) => {   
             dispatch(playCard(0,id))
+        },
+
+        removeGem: (amount) => {
+            dispatch(removeGem(amount));
         }
+
     }
 }
 

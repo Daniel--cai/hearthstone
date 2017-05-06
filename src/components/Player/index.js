@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./Card.scss";
+import styles from "./Player.scss";
 import { DragSource } from 'react-dnd';
 import classnames from 'classnames'
 export const ItemTypes = {
@@ -31,7 +31,7 @@ export default class Player extends React.Component{
     let classNames = classnames(styles.player, isDragging ? styles['player-drag'] : '');
     return connectDragSource(
       <div className={classNames}>
-        <img className={styles.bg }src={require("images/champions/"+name.toLowerCase()+".png") }/>
+  
         <div className={styles.gem}>   
           <span>{mana}</span>
            <img src={require("images/card/gem.png")} />

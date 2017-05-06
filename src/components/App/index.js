@@ -4,6 +4,7 @@ import HandLink from "containers/HandLink";
 import EndTurnLink from 'containers/EndTurnLink'
 import BoardLink from 'containers/BoardLink'
 import GemLink from 'containers/GemLink'
+import PlayerLink from 'containers/PlayerLink'
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
@@ -23,6 +24,7 @@ export default class App extends React.Component {
     render(){
         return (
             <div className={styles.app}>
+                <PlayerLink/>
                 <GemLink/>
                 <HandLink/>
                 <EndTurnLink name="shyvana" />

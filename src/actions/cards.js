@@ -2,11 +2,13 @@ export const ADD_CARD = 'ADD_CARD';
 export const PLAY_CARD = 'PLAY_CARD'
 export const ATTACK_MINION = 'ATTACK_MINION';
 export const NEW_CARD = 'NEW_CARD';
-export const REMOVE_CARD = 'REMOVE_CARD'
-export const REQUEST_ADD_CARD = 'REQUEST_ADD_CARD'
-export const ADD_GEM = 'ADD_GEM'
-export const REMOVE_GEM = 'REMOVE_GEM'
-export const ADD_MAX_GEM = 'ADD_MAX_GEM'
+export const REMOVE_CARD = 'REMOVE_CARD';
+export const REQUEST_ADD_CARD = 'REQUEST_ADD_CARD';
+export const ADD_GEM = 'ADD_GEM';
+export const REMOVE_GEM = 'REMOVE_GEM';
+export const ADD_MAX_GEM = 'ADD_MAX_GEM';
+export const ADD_PLAYER_HEALTH = 'ADD_PLAYER_HEALTH';
+export const REMOVE_PLAYER_HEALTH = 'REMOVE_PLAYER_HEALTH';
 
 /**
  * Received from server. To be added to the store.
@@ -53,4 +55,12 @@ export function removeGem(amount){
 
 export function addMaxGem(amount){
     return {type: ADD_MAX_GEM, amount}
+}
+
+export function addPlayerHealth(amount){
+    return {type: ADD_PLAYER_HEALTH, amount}
+}
+
+export function removePlayerHealth(amount){
+    return {type: REMOVE_PLAYER_HEALTH, amount}
 }

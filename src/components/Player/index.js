@@ -26,15 +26,15 @@ const playerSource = {
 export default class Player extends React.Component{ 
 
   render(){
-    var {name, attack, health, mana, gem} = this.props
+    var {health} = this.props
     const {connectDragSource, isDragging } = this.props
     let classNames = classnames(styles.player, isDragging ? styles['player-drag'] : '');
     return connectDragSource(
       <div className={classNames}>
   
         <div className={styles.gem}>   
-          <span>{mana}</span>
-           <img src={require("images/card/gem.png")} />
+          <span>{health}</span>
+           <img src={require("images/card/health.png")} />
         </div>
       </div>
 

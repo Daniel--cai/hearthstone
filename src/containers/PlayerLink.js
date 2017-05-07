@@ -6,8 +6,7 @@ import Player from 'components/Player';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        cards : state.cards,
-        gem : state.game.gem,
+        health : state.game.playerhealth
     }
 }
 

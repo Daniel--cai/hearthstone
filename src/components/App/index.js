@@ -25,6 +25,7 @@ export default class App extends React.Component {
         return (
             <div className={styles.app}>
                 <PlayerLink/>
+                <PlayerLink/>
                 <GemLink/>
                 <HandLink/>
                 <EndTurnLink name="shyvana" />

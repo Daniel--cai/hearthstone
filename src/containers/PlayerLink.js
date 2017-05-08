@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { playCard, removeCard, removeGem } from 'actions/cards';
+import { playCard, removeCard, removeGem,addPlayerHealth , removePlayerHealth } from 'actions/cards';
 
 
 import Player from 'components/Player';
@@ -12,6 +12,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        addHealth: (amount) => {   
+            dispatch(addPlayerHealth(amount))
+        },
+        removeHealth: (amount) => {   
+            dispatch(removePlayerHealth(amount))
+        },
     }
 }
 

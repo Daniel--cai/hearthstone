@@ -23,4 +23,10 @@ module.exports = [
         attack: 3,
         mana: 2,
     },
+    {
+        name:'vayne',
+        health:3,
+        attack:2,
+        mana:1
+    }
 ]

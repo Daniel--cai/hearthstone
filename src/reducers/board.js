@@ -1,4 +1,4 @@
-import {PLAY_CARD,ATTACK_MINION} from '../actions/cards'
+import {PLAY_CARD,ATTACK_MINION, REMOVE_MINION} from '../actions/cards'
 
 
 var boardInitialState = [[],[]]
@@ -17,12 +17,16 @@ const attackMinion = (board, source, target) => {
     var targetAttack = target.attack;
     var targetHealth = target.health;
     var copy = board.map(p => p.map(m=>({...m})))
-    copy[source.player].find(m=>m.id == source.id).health = sourceHealth - targetAttack 
-    copy[target.player].find(m=>m.id == target.id).health = targetHealth - sourceAttack
+    copy[source.player].find(m=>m.id == source.id).health = Math.max(sourceHealth - targetAttack,0) 
+    copy[target.player].find(m=>m.id == target.id).health = Math.max(targetHealth - sourceAttack,0)
     return copy
 
 }
 
+const removeMinion = (board, source, target) =>  {    
+    return [board[0].filter(m => m.id != target.id),[...board[1]]]
+
+}
 
 export default function board(state = boardInitialState, action) {
  
@@ -31,6 +35,8 @@ export default function board(state = boardInitialState, action) {
             return addCardBoard(state, action.state.cards.find((c => c.id == action.id)),action.player)
         case ATTACK_MINION:
             return attackMinion(state, action.source, action.target)
+        case REMOVE_MINION:
+            return removeMinion(state,action.source, action.target)
         default:
             return state;
     }

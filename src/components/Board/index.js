@@ -5,6 +5,7 @@ import styles from './Board.scss'
 import {ItemTypes} from 'components/Card'
 import { DropTarget } from 'react-dnd';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+import PlayerLink from 'containers/PlayerLink'
 
 const boardTarget = {
     drop(props, monitor){
@@ -38,7 +39,8 @@ export default class Board extends React.Component {
                             attackMinion={(minion) => {this.props.attackMinion(card, minion)}}
             />)}))}, this);
         return connectDropTarget(
-            <div className={styles.board}>              
+            <div className={styles.board}>         
+                    <PlayerLink/>     
                     {board[0]}        
                     {board[1]}              
             </div>

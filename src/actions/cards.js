@@ -9,6 +9,7 @@ export const REMOVE_GEM = 'REMOVE_GEM';
 export const ADD_MAX_GEM = 'ADD_MAX_GEM';
 export const ADD_PLAYER_HEALTH = 'ADD_PLAYER_HEALTH';
 export const REMOVE_PLAYER_HEALTH = 'REMOVE_PLAYER_HEALTH';
+export const REMOVE_MINION = 'REMOVE_MINION';
 
 /**
  * Received from server. To be added to the store.
@@ -32,7 +33,23 @@ export function playCard(player, id){
 }
 
 export function attackMinion(source, target){
-    return {type: ATTACK_MINION, source, target}
+    return (dispatch, getState) => {
+        dispatch({type: ATTACK_MINION, source, target})
+        console.log(  getState())
+        var targetHealth = getState().board[0].find(m => m.id == target.id).health
+        var sourceHealth = getState().board[0].find(m => m.id == source.id).health
+        if (targetHealth == 0)
+            dispatch(removeMinion(source,target))
+        if (sourceHealth == 0)
+            dispatch(removeMinion(target,source))
+    
+    }
+}
+
+export function removeMinion(source,target){
+    return(dispatch, getState) =>{
+        dispatch({type: REMOVE_MINION, source, target})
+    }
 }
 
 export function newCard(name){

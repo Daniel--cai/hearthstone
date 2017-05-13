@@ -11,9 +11,9 @@ export default function cards (state = gameInitialState, action) {
         case ADD_MAX_GEM:
             return {...state, maxgem: Math.min(state.maxgem+action.amount, 10)};  
         case ADD_PLAYER_HEALTH:
-            return {...state, playerhealth: playerhealth+action.amount}
+            return {...state, playerhealth: state.playerhealth+action.amount}
         case REMOVE_PLAYER_HEALTH:
-             return {...state, playerhealth: Math.min(playerhealth+action.amount,0)}
+             return {...state, playerhealth: Math.max(state.playerhealth-action.amount,0)}
         default:
             return state
     }

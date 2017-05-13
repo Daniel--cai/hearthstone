@@ -1,35 +1,28 @@
 import React from 'react';
 import styles from "./Player.scss";
-import { DragSource } from 'react-dnd';
+import { DropTarget } from 'react-dnd';
 import classnames from 'classnames'
-export const ItemTypes = {
-  Player: 'Player'
-};
+import {ItemTypes} from 'components/Minion'
 
-const playerSource = {
-  beginDrag(props){
-    return {...props}
-  },
 
-  canDrag(props, monitor){
-    if (props.mana > props.gem) return false
-    if (props.name == 'back')
-      return false;
-    return true;
-  }
+const playerTarget = {
+    drop(props, monitor){
+        const card = monitor.getItem();
+        props.removeHealth(card.attack)
+    }
 }
 
-@DragSource(ItemTypes.Player, playerSource, (connect,monitor)=>({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
+@DropTarget(ItemTypes.MINION, playerTarget, (connect, monitor) => ({
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
 }))
 export default class Player extends React.Component{ 
 
   render(){
     var {health} = this.props
-    const {connectDragSource, isDragging } = this.props
-    let classNames = classnames(styles.player, isDragging ? styles['player-drag'] : '');
-    return connectDragSource(
+    const {connectDropTarget, isOver } = this.props
+    let classNames = classnames(styles.player);
+    return connectDropTarget(
       <div className={classNames}>
   
         <div className={styles.gem}>   

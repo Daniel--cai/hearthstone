@@ -3,11 +3,11 @@
     background-color:#2e3e4e;
     color:white;
     font-size: 13px;
-
     padding:5px;
     box-sizing: border-box;
     width:150px;
     flex-direction: column; 
+    overflow-y: auto;
     
 }  
 
@@ -18,10 +18,10 @@
             padding: 0;
             li {
                 a {
-                    color:white;
+                    color:#c8c8c8;
                     text-decoration: none;
                     &:hover{
-                        color:#c8c8c8;
+                        color:white;
                     }
                 }
             }

@@ -1,0 +1,22 @@
+
+.topbar {  
+    height:75px;
+    box-sizing: border-box;
+    display:flex;
+}  
+.logo {
+    color:#ffffff;
+    background-color:#97a7a7;
+    box-sizing: border-box;
+    width:150px;
+    img{
+        width:50%;
+        padding: 5%;
+
+    }
+}
+
+.header {
+    background-color:#c8c8c8;
+    flex:1;
+}

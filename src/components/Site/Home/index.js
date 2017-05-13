@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './Home.scss';
-import Sidebar from 'components/Sidebar'
-import Topbar from 'components/Topbar'
+import Sidebar from 'site/Sidebar'
+import Topbar from 'site/Topbar'
+import Body from 'site/Body'
 
 export default class Home extends React.Component {
 
@@ -15,10 +16,11 @@ export default class Home extends React.Component {
     render(){
         return (
             <div className={styles.home}>
-
-                <Sidebar/>
                 <Topbar/>
-
+                <div className={styles.content}>
+                    <Sidebar/>
+                    <Body/>
+                </div>
             </div>
 
         )

@@ -61,6 +61,7 @@ module.exports = {
       'containers': resolve(__dirname, 'src/containers'),
       'actions': resolve(__dirname, 'src/actions'),
       'reducers': resolve(__dirname, 'src/reducers'),
+      'site': resolve(__dirname, 'src/components/site'),
     }
   }
 };

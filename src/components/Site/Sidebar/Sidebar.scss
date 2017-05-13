@@ -1,0 +1,35 @@
+
+.sidebar {  
+    background-color:#2e3e4e;
+    color:white;
+    font-size: 13px;
+
+    padding:5px;
+    box-sizing: border-box;
+    width:150px;
+    flex-direction: column; 
+    
+}  
+
+.links {
+    flex:1;
+    ul {
+            list-style-type: none;
+            padding: 0;
+            li {
+                a {
+                    color:white;
+                    text-decoration: none;
+                    &:hover{
+                        color:#c8c8c8;
+                    }
+                }
+            }
+        }
+}
+
+
+.bullet {
+    padding:15px;
+    padding-right : 20px;
+}

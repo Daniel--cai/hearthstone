@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { AppContainer } from 'react-hot-loader';
 import App from 'components/App';
+import Home from 'components/Home'
 
 import { applyMiddleware, createStore, compose } from 'redux';
 import thunk  from 'redux-thunk'
@@ -41,11 +42,11 @@ const render = (Component) => {
   );
 };
 
-render(App);
+render(Home);
 
 if (module.hot) {
-  module.hot.accept('components/App', () => {
-    render(App)
+  module.hot.accept('components/Home', () => {
+    render(Home)
   });
   module.hot.accept('reducers/index', ()=>{
     const nextRootReducer = require('reducers').default;

@@ -35,14 +35,12 @@ export function playCard(player, id){
 export function attackMinion(source, target){
     return (dispatch, getState) => {
         dispatch({type: ATTACK_MINION, source, target})
-        console.log(  getState())
         var targetHealth = getState().board[0].find(m => m.id == target.id).health
         var sourceHealth = getState().board[0].find(m => m.id == source.id).health
         if (targetHealth == 0)
             dispatch(removeMinion(source,target))
         if (sourceHealth == 0)
-            dispatch(removeMinion(target,source))
-    
+            dispatch(removeMinion(target,source))   
     }
 }
 

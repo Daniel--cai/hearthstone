@@ -62,6 +62,7 @@ module.exports = {
       'actions': resolve(__dirname, 'src/actions'),
       'reducers': resolve(__dirname, 'src/reducers'),
       'site': resolve(__dirname, 'src/components/site'),
+      'css': resolve(__dirname, 'src/css/global'),
     }
   }
 };

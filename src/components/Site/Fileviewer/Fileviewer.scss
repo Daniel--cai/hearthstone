@@ -1,0 +1,44 @@
+.fileviewer {
+  font-family: 'Lucida Sans';
+  display:flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex:1;
+
+  color:black;
+
+  tr:nth-child(odd) {
+    background: white;
+  }
+  tr:nth-child(even) {
+    background:#f5f5f5
+  }
+  td:first-child,td:last-child,th {
+    color:#018e6b;
+  }
+  tr {
+    border-top:  solid 1px #018e6b;
+    border-bottom:  solid 1px #018e6b;
+    &:hover{
+      background-color: rgba(0, 0, 0, .1);
+
+    }
+
+  } 
+  tr:first-child {
+    border-top: none;
+    border-bottom: none;
+      text-transform: uppercase;
+          &:hover{
+      background:none;;
+    }
+  }
+  td {
+        padding:10px;
+  }
+  table {
+    border-collapse: collapse;
+    min-width:700px;
+  }
+
+}

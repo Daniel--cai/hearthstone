@@ -18,7 +18,7 @@ export default class Home extends React.Component {
             <div className={styles.home}>
                 <Topbar/>
                 <div className={styles.content}>
-                    <Sidebar/>
+            
                     <Body/>
                 </div>
             </div>

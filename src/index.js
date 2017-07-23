@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { AppContainer } from 'react-hot-loader';
 import App from 'components/App';
-import Home from 'site/Home'
+import Home from 'components/App'
 
 import { applyMiddleware, createStore, compose } from 'redux';
 import thunk  from 'redux-thunk'

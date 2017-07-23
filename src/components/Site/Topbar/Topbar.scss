@@ -1,12 +1,12 @@
 
 .topbar {  
-    height:75px;
+
     box-sizing: border-box;
     display:flex;
 }  
 .logo {
     color:#ffffff;
-    background-color:#97a7a7;
+    background-color:#018e6b;
     box-sizing: border-box;
     width:150px;
     img{
@@ -16,7 +16,41 @@
     }
 }
 
+.heading {
+    float: left;
+    margin:-15px;
+    //font-size: 20px;
+}
+
+
+.search {
+    padding: 10px;
+    position: relative;
+    input{
+        padding: 10px;
+    }
+    span {
+        color:grey;
+        position: absolute;
+        left:105px;
+        top:0px;
+
+    }
+}
+
 .header {
-    background-color:#c8c8c8;
+    background-color:#018e6b;
+    color: white;
     flex:1;
+    text-align: right;
+    padding: 10px;
+    span {
+        padding: 10px;
+    }    
+    input,input::placeholder {
+        color:inherit;
+        font:inherit;
+        font-size:inherit;
+        color: grey;
+    }
 }

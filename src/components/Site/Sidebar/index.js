@@ -7,29 +7,27 @@ export default class Sidebar extends React.Component {
     render(){
         return(
             <div className={styles.sidebar}>
-                <div className={styles.links}>
-                <ul>
-                    <li>
-                        <FontAwesome name='home' className={styles.bullet}/>
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <FontAwesome name='th-large' className={styles.bullet}/>
-                        <a href="#">Card List</a>
-                        </li>
-                    <li>
-                        <FontAwesome name='snowflake-o' className={styles.bullet}/>
-                        <a href="#">Ranking</a>
-                        </li>
-                    <li>
-                        <FontAwesome name='pie-chart' className={styles.bullet}/>
-                        <a href="#">Play</a>
-                        </li>          
-                    <li>
-                        <FontAwesome name='align-justify' className={styles.bullet}/>
-                        <a href="#">Disclaimer</a>
-                        </li>              
-                </ul>
+               
+                <div className={styles.links}> 
+                <table>
+                    <tr><td colSpan={2}>MY PIED PIPER</td></tr>
+                    <tr>
+                        <td><FontAwesome name='folder-open-o'className={styles.bullet}/></td>
+                        <td><a href="#">Recent</a></td>
+                    </tr>
+                    <tr>
+                        <td><FontAwesome name='star-o'className={styles.bullet}/></td>
+                        <td><a href="#">Starred</a></td>
+                        </tr>
+                    <tr>
+                        <td><FontAwesome name='file'className={styles.bullet}/></td>
+                        <td><a href="#">Files</a></td>
+                        </tr>
+                    <tr>
+                        <td><FontAwesome name='camera'className={styles.bullet}/></td>
+                        <td><a href="#">Photos</a></td>
+                        </tr>                      
+                 </table>
                 </div>
             </div>
         )
